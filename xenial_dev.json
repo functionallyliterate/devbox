@@ -6,7 +6,7 @@
       "expect_disconnect": true,
       "override": {
         "virtualbox-iso": {
-          "script": "scripts/base.sh"
+          "script": "scripts/base/base.sh"
         }
       }
     },
@@ -17,7 +17,7 @@
       "pause_before": "20s",
       "override": {
         "virtualbox-iso": {
-          "script": "scripts/dist-upgrade.sh"
+          "script": "scripts/base/dist-upgrade.sh"
         }
       }
     },
@@ -28,7 +28,7 @@
       "pause_before": "20s",
       "override": {
         "virtualbox-iso": {
-          "script": "scripts/guest_additions.sh"         
+          "script": "scripts/base/guest_additions.sh"         
         }
       }
     },
@@ -38,7 +38,7 @@
       "pause_before": "20s",
       "override": {
         "virtualbox-iso": {
-          "script": "scripts/oh-my-zsh.sh"        
+          "script": "scripts/base/oh-my-zsh.sh"        
         }
       }
     },
@@ -50,12 +50,22 @@
       "override": {
         "virtualbox-iso": {
           "scripts": [
-            "scripts/vagrant.sh",
-            "scripts/vscode.sh",
-            "scripts/powerline.sh",
-            "scripts/terminator.sh",
-            "scripts/cleanup.sh"          
+            "scripts/base/vagrant.sh",
+            "scripts/base/vscode.sh",
+            "scripts/base/powerline.sh",
+            "scripts/base/terminator.sh"          
           ]
+        }
+      }
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+      "expect_disconnect": true,
+      "pause_before": "20s",
+      "override": {
+        "virtualbox-iso": {
+          "script": "scripts/base/cleanup.sh"        
         }
       }
     }
