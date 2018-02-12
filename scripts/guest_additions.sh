@@ -5,3 +5,4 @@ VBOX_ISO=VBoxGuestAdditions_$VBOX_VERSION.iso
 mount -o loop ${VBOX_ISO} /mnt
 /mnt/VBoxLinuxAdditions.run
 umount /mnt
+reboot
