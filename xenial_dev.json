@@ -34,6 +34,17 @@
     },
     {
       "type": "shell",
+      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+      "expect_disconnect": true,
+      "pause_before": "20s",
+      "override": {
+        "virtualbox-iso": {
+          "script": "scripts/base/guest_additions_groups.sh"         
+        }
+      }
+    },
+    {
+      "type": "shell",
       "expect_disconnect": true,
       "pause_before": "20s",
       "override": {
