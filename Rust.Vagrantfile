@@ -77,11 +77,19 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
+  
    config.vm.provision "shell", privileged: false, inline: <<-SHELL
+
+   # Dependency for lldb Debugging Plugin.
+   # Using 4.0 in lieu of 5.0 (see: https://stackoverflow.com/questions/46164427/lldb-is-not-starting-an-application)
+   sudo apt-get install -y lldb-4.0
    
    curl https://sh.rustup.rs -sSf | sh -s -- -y
 
    code --install-extension rust-lang.rust
-
+   code --install-extension bungcip.better-toml
+   code --install-extension vadimcn.vscode-lldb
+   code --install-extension webfreak.debug
    SHELL
+   
 end
